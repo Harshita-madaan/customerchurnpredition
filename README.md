@@ -1,37 +1,107 @@
-# customerchurnpredition
-Telecom Customer Churn Prediction using Logistic Regression
+# 📌 Telecom Customer Churn Prediction using Machine Learning
 
-📖 Project Description
-This project focuses on predicting customer churn for a telecom company using machine learning techniques. The objective is to identify customers who are likely to discontinue their services, enabling proactive retention strategies.
-The dataset was preprocessed, analyzed, and modeled using Logistic Regression. The project includes data cleaning, feature engineering, exploratory data analysis (EDA), model evaluation, and an interactive prediction system with user input validation.
-🚀 Key Features
-Performed data preprocessing and cleaning
-Handled missing values and categorical encoding
-Applied Label Encoding and One-Hot Encoding
-Scaled numerical features using StandardScaler
-Built and trained a Logistic Regression model
+## 📖 Overview
+
+Developed a machine learning model to predict customer churn for a telecom company using Logistic Regression. The objective is to identify customers at high risk of leaving the service, enabling data-driven retention strategies.
+
+This project demonstrates end-to-end ML workflow including data preprocessing, feature engineering, exploratory data analysis (EDA), model training, evaluation, and interactive deployment.
+
+---
+
+## 🎯 Problem Statement
+
+Customer churn directly impacts revenue in telecom businesses.  
+The goal of this project is to build a predictive model that can classify whether a customer will churn (leave) or stay, based on service usage patterns and demographic information.
+
+---
+
+## 🔍 Exploratory Data Analysis (EDA)
+
+- Analyzed churn distribution across customers
+- Visualized class imbalance in the dataset
+- Identified relationships between service features and churn
+- Cleaned and handled missing values
+- Converted categorical features into numerical format
+
+---
+
+## ⚙️ Data Preprocessing
+
+- Removed irrelevant features (e.g., customerID)
+- Applied:
+  - Label Encoding for binary categorical features
+  - One-Hot Encoding for multi-category variables
+- Converted `TotalCharges` to numeric and handled missing values
+- Scaled numerical features using **StandardScaler**
+- Performed 80-20 Train-Test Split
+
+---
+
+## 🤖 Model Development
+
+- Algorithm Used: **Logistic Regression**
+- Optimized using increased `max_iter` for convergence
+- Trained on processed telecom dataset
+
+---
+
+## 📊 Model Evaluation
+
 Evaluated model performance using:
-Classification Report
-Confusion Matrix (visualized)
-Visualized:
-Customer churn distribution
-Confusion matrix heatmap
-Developed an interactive prediction system
-Implemented strict input validation (0/1 enforcement)
-Displayed churn prediction along with probability score
-📊 Model Evaluation
-Used train-test split (80-20)
-Evaluated using:
-Accuracy
-Precision
-Recall
-F1-score
-Confusion Matrix visualization
-🛠 Technologies Used
-Python
-Pandas
-NumPy
-Matplotlib
-Scikit-learn
-🎯 Outcome
-The model successfully predicts whether a telecom customer is likely to churn or stay, along with churn probability percentage. The project demonstrates practical implementation of data preprocessing, machine learning modeling, evaluation metrics, and user-level prediction deployment.
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix (visualized)
+
+The confusion matrix visualization helps interpret:
+- True Positives
+- False Positives
+- False Negatives
+- True Negatives
+
+---
+
+## 💻 Interactive Prediction System
+
+Built an interactive console-based prediction system that:
+
+- Accepts user inputs for customer features
+- Implements strict 0/1 input validation
+- Applies scaling and feature alignment
+- Outputs:
+  - Churn Prediction (YES / NO)
+  - Churn Probability (%)
+
+---
+
+## 🛠 Tech Stack
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+
+---
+
+## 📈 Key Learning Outcomes
+
+- End-to-end machine learning pipeline implementation
+- Feature engineering and preprocessing techniques
+- Handling categorical data effectively
+- Model evaluation using classification metrics
+- Building user-level prediction interface
+- Understanding business impact of churn prediction
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository
+2. Install dependencies:
+
+   ```bash
+   pip install pandas numpy matplotlib scikit-learn
+
