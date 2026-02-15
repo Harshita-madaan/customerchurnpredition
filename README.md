@@ -96,6 +96,8 @@ Built an interactive console-based prediction system that:
 - Understanding business impact of churn prediction
 
 ---
+## Dataset Link
+-https://www.kaggle.com/code/farazrahman/telco-customer-churn-logisticregression
 
 ## 🚀 How to Run
 
