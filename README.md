@@ -97,7 +97,7 @@ Built an interactive console-based prediction system that:
 
 ---
 ## Dataset Link
--https://www.kaggle.com/code/farazrahman/telco-customer-churn-logisticregression
+-https://www.kaggle.com/code/farazrahman/telco-customer-churn-logisticregression](https://www.kaggle.com/code/farazrahman/telco-customer-churn-logisticregression/input
 
 ## 🚀 How to Run
 
