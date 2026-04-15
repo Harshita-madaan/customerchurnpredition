@@ -1,197 +1,124 @@
- 📌 Telecom Customer Churn Prediction using Machine Learning
- https://preview--cust-churn-analyzer.lovable.app
+ # 📊 Customer Churn Prediction
 
 ## 📖 Overview
 
-Developed a machine learning pipeline to predict customer churn for a telecom company using **three classification algorithms** — **Logistic Regression**, **K-Nearest Neighbors (KNN)**, and **Decision Tree**. The objective is to identify customers at high risk of leaving the service, enabling data-driven retention strategies.
+Developed an end-to-end machine learning pipeline to predict customer churn for a telecom company using multiple classification algorithms.
+The goal is to identify customers at high risk of leaving, enabling data-driven retention strategies.
 
-This project demonstrates a complete end-to-end ML workflow including data preprocessing, feature engineering, exploratory data analysis (EDA), multi-model training, comparative evaluation, and a web-based interactive prediction interface.
+This project demonstrates a complete ML workflow including data preprocessing, feature engineering, multi-model training, evaluation, and visualization.
 
 ---
 
 ## 🎯 Problem Statement
 
-Customer churn directly impacts revenue in telecom businesses. The goal of this project is to build and compare predictive models that classify whether a customer will **churn (leave)** or **stay**, based on service usage patterns and demographic information — then identify the best-performing model.
+Customer churn significantly impacts revenue in telecom businesses.
+The objective is to build and compare predictive models that classify whether a customer will churn or stay based on service usage and demographic features.
 
 ---
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
-- Analyzed churn distribution across customers
-- Visualized class imbalance in the dataset
-- Identified relationships between service features and churn
-- Cleaned and handled missing values
-- Converted categorical features into numerical format
+* Analyzed churn distribution and class imbalance
+* Explored relationships between customer features and churn
+* Cleaned dataset and handled missing values
+* Converted categorical features into numerical format
 
 ---
 
 ## ⚙️ Data Preprocessing
 
-- Removed irrelevant features (e.g., `customerID`)
-- Applied:
-  - **Label Encoding** for binary categorical features
-  - **One-Hot Encoding** for multi-category variables (`InternetService`, `Contract`, `PaymentMethod`)
-- Converted `TotalCharges` to numeric and handled missing values with median imputation
-- Scaled numerical features (`tenure`, `MonthlyCharges`, `TotalCharges`) using **StandardScaler**
-- Performed **80-20 Train-Test Split** with stratification
+* Removed irrelevant features (e.g., `customerID`)
+* Applied Label Encoding for binary features
+* Applied One-Hot Encoding for multi-category variables
+* Converted `TotalCharges` to numeric and handled missing values
+* Scaled numerical features using **StandardScaler**
+* Performed **80-20 stratified train-test split**
 
 ---
 
-## 🤖 Models Trained
+## 🤖 Models Implemented
 
-### 1. 📘 Logistic Regression
-- Draws a linear decision boundary to separate churners from non-churners
-- Optimized with `max_iter=2000` for convergence
-- **Best overall performer** across all metrics
-
-### 2. 📙 K-Nearest Neighbors (KNN)
-- Predicts based on the K most similar past customers (majority vote)
-- Automatically finds the **best K value** by testing K = 1 to 20
-- Best K found: **K = 16**
-
-### 3. 📗 Decision Tree
-- Uses a flowchart-like Yes/No question structure to classify customers
-- Controlled with `max_depth=5` to prevent overfitting
-- Provides **feature importance scores** to explain predictions
+* 📘 Logistic Regression
+* 📙 K-Nearest Neighbors (KNN) *(best K ≈ 20)*
+* 📗 Decision Tree *(best depth ≈ 5)*
+* 🌲 Random Forest
 
 ---
 
-## 📊 Model Evaluation & Results
+## 📊 Model Performance
 
-All models evaluated using:
-
-| Metric | Logistic Regression | KNN (K=16) | Decision Tree |
-|:-------|:-------------------:|:----------:|:-------------:|
-| **Accuracy** | **80.48%** | 78.0% | 78.85% |
-| **Precision** | **79.73%** | 76.84% | 79.0% |
-| **Recall** | **80.48%** | 78.0% | 78.85% |
-| **F1 Score** | **79.96%** | 77.17% | 78.92% |
-
-> 🏆 **Winner: Logistic Regression** — leads on every single metric.
-
-### Confusion Matrix Highlights
-
-| Model | Correct Non-Churners | Correct Churners Caught | Missed Churners |
-|:------|:--------------------:|:-----------------------:|:---------------:|
-| Logistic Regression | 925 | 209 | 165 |
-| KNN (K=16) | 917 | 182 | 192 |
-| Decision Tree | 882 | 229 | 145 |
-
-### 🌟 Top Features Driving Churn *(from Decision Tree)*
-
-| Rank | Feature | Importance |
-|:----:|:--------|:----------:|
-| 1 | OnlineSecurity | 38.2% |
-| 2 | Tenure | 23.44% |
-| 3 | InternetService — Fiber Optic | 13.23% |
-| 4 | TotalCharges | 8.02% |
-| 5 | Contract — Two Year | 4.69% |
+| Metric    | Logistic Regression | KNN       | Decision Tree | Random Forest |
+| --------- | ------------------- | --------- | ------------- | ------------- |
+| Accuracy  | 73.81%              | **78.0%** | 75.16%        | 76.93%        |
+| Precision | 79.66%              | 77.0%     | 79.93%        | 79.51%        |
+| Recall    | 73.81%              | 78.0%     | 75.16%        | 76.93%        |
+| F1 Score  | 75.19%              | 77.32%    | 76.38%        | **77.76%**    |
+| ROC-AUC   | **84.17%**          | 81.22%    | 83.18%        | 84.12%        |
+| CV-AUC    | **84.48%**          | 81.39%    | 82.65%        | 84.17%        |
 
 ---
 
-## 📈 Visualizations Generated
+## 🏆 Key Insights
 
-| # | Graph | Description |
-|:-:|:------|:------------|
-| 1 | 📊 Grouped Bar Chart | Accuracy, Precision, Recall & F1 Score for all 3 models side by side |
-| 2 | 🔲 Confusion Matrices | All 3 models displayed together for direct comparison |
-| 3 | 📉 KNN Accuracy vs K | Line chart showing accuracy across K=1 to 20 with best K highlighted |
-| 4 | 🌟 Feature Importance | Top 8 features ranked by Decision Tree importance score |
-| 5 | 🕸 Radar Chart | Web-shaped overview of all metrics per model simultaneously |
-| 6 | 📦 Churn Distribution | Bar chart of churners vs non-churners in the dataset |
+* **KNN achieved highest accuracy (~78%)**
+* **Random Forest achieved best F1 Score (~77.7%)**
+* **Logistic Regression & Random Forest showed highest ROC-AUC (~84%)**
+* Model performance is consistent across cross-validation, indicating good reliability
 
 ---
 
-## 💻 Interactive Prediction System
+## 📈 Visualizations
 
-Built a **web-based prediction interface** that:
-
-- Takes customer details as input 
-- Runs the customer data through all 3 trained models simultaneously
-- Displays churn prediction **(YES / NO)** for each model
-- Shows **churn probability (%)** per model
-- Highlights the most reliable model's result
+* 📊 Model comparison (Accuracy, Precision, Recall, F1 Score)
+* 🔲 Confusion matrices for all models
+* 📉 KNN hyperparameter tuning (K vs performance)
+* 🌟 Feature importance (Random Forest)
+* 📈 ROC curve comparison
+* 🕸 Radar chart for multi-metric comparison
+* 📦 Cross-validation stability analysis
 
 ---
 
 ## 🛠 Tech Stack
 
-| Tool | Purpose |
-|:-----|:--------|
-| `Python 3.8+` | Core language |
-| `Pandas` | Data loading & manipulation |
-| `NumPy` | Numerical operations |
-| `Matplotlib` | All visualizations & graphs |
-| `Scikit-learn` | Preprocessing, model training & evaluation |
-| `Lovable` | Web-based prediction interface |
+* **Python**
+* **Pandas, NumPy**
+* **Matplotlib**
+* **Scikit-learn**
 
 ---
 
 ## 📁 Dataset
 
-- **Source:** IBM Sample Dataset — Telco Customer Churn
-- **Records:** 7,043 customers, 21 features
-- **Target Variable:** `Churn` (Yes / No)
-- 🔗 [View Dataset on Kaggle](https://www.kaggle.com/code/farazrahman/telco-customer-churn-logisticregression/input)
-
----
-
-## 📂 Project Structure
-
-```
-telecom-churn-prediction/
-│
-├── churn_prediction.py              # Main ML script — all 3 models
-├── README.md                        # Project documentation
-└── dataset/
-    └── WA_Fn-UseC_-Telco-Customer-Churn.csv
-```
+* IBM Telco Customer Churn Dataset
+* ~7,000 customers, 21 features
+* Target variable: `Churn` (Yes/No)
 
 ---
 
 ## 🚀 How to Run
 
-**1. Clone the repository**
-
 ```bash
-git clone https://github.com/your-username/telecom-churn-prediction.git
-cd telecom-churn-prediction
-```
-
-**2. Install dependencies**
-
-```bash
+git clone https://github.com/your-username/customer-churn-prediction.git
+cd customer-churn-prediction
 pip install pandas numpy matplotlib scikit-learn
+python churnprediction.py
 ```
-
-**3. Update the dataset path in the script**
-
-```python
-df = pd.read_csv("path/to/WA_Fn-UseC_-Telco-Customer-Churn.csv")
-```
-
-**4. Run the script**
-
-```bash
-python churn_prediction.py
-```
-
-**5.** All 6 graphs will be displayed automatically, followed by the model comparison summary in the terminal.
 
 ---
 
-## 📈 Key Learning Outcomes
+## 📈 Key Learnings
 
-- End-to-end machine learning pipeline implementation
-- Training and comparing multiple ML algorithms on the same dataset
-- Feature engineering and preprocessing techniques
-- Handling categorical data and class imbalance effectively
-- Model evaluation using Accuracy, Precision, Recall, F1 Score & Confusion Matrix
-- KNN hyperparameter tuning — finding the optimal K value
-- Decision Tree interpretability via feature importance
-- Building a web-based multi-model prediction interface with Lovable
-- Understanding the business impact of churn prediction in telecom
+* Built a complete end-to-end ML pipeline
+* Compared multiple classification models
+* Performed feature engineering and preprocessing
+* Handled class imbalance using weighted models
+* Evaluated models using F1 Score and ROC-AUC instead of accuracy alone
+* Applied hyperparameter tuning for KNN and Decision Tree
 
 ---
 
-> 💡 **Recommendation:** Logistic Regression is the best model for this dataset — achieving the highest Accuracy **(80.48%)** and F1 Score **(79.96%)** with low complexity and fast inference.
+## 💡 Conclusion
+
+The models achieved **~84% ROC-AUC**, indicating strong ability to distinguish churn vs non-churn customers.
+This project highlights the importance of using multiple evaluation metrics and model comparison in real-world classification problems.
